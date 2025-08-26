@@ -12,7 +12,7 @@ function App() {
   const product_details = [
     {
       id: 1,
-      product_image: new URL("./assets/earbuds.png", import.meta.url).href,
+      product_image: "earbuds.png",
       product_category: "electronics",
       product_price: 50,
       product_name: "Wireless Earbuds",
@@ -24,7 +24,7 @@ function App() {
     },
     {
       id: 2,
-      product_image: new URL("./assets/smartwatch.png", import.meta.url).href,
+      product_image: "smartwatch.png",
       product_category: "electronics",
       product_price: 120,
       product_name: "Smart Watch",
@@ -36,8 +36,7 @@ function App() {
     },
     {
       id: 3,
-      product_image: new URL("./assets/bluetooth-speaker.png", import.meta.url)
-        .href,
+      product_image: "bluetooth-speaker.png",
       product_category: "electronics",
       product_price: 180,
       product_name: "Bluetooth Speaker",
@@ -49,7 +48,7 @@ function App() {
     },
     {
       id: 4,
-      product_image: new URL("./assets/tablet.png", import.meta.url).href,
+      product_image: "tablet.png",
       product_category: "electronics",
       product_price: 350,
       product_name: "Android Tablet",
@@ -61,7 +60,7 @@ function App() {
     },
     {
       id: 5,
-      product_image: new URL("./assets/laptop.png", import.meta.url).href,
+      product_image: "laptop.png",
       product_category: "electronics",
       product_price: 700,
       product_name: "Laptop",
@@ -73,7 +72,7 @@ function App() {
     },
     {
       id: 6,
-      product_image: new URL("./assets/iphone.png", import.meta.url).href,
+      product_image: "iphone.png",
       product_category: "electronics",
       product_price: 999,
       product_name: "iPhone 14",
@@ -85,7 +84,7 @@ function App() {
     },
     {
       id: 7,
-      product_image: new URL("./assets/tshirt.png", import.meta.url).href,
+      product_image: "tshirt.png",
       product_category: "clothings",
       product_price: 20,
       product_name: "Cotton T-Shirt",
@@ -97,7 +96,7 @@ function App() {
     },
     {
       id: 8,
-      product_image: new URL("./assets/jeans.png", import.meta.url).href,
+      product_image: "jeans.png",
       product_category: "clothings",
       product_price: 45,
       product_name: "Blue Jeans",
@@ -109,7 +108,7 @@ function App() {
     },
     {
       id: 9,
-      product_image: new URL("./assets/hoodie.png", import.meta.url).href,
+      product_image: "hoodie.png",
       product_category: "clothings",
       product_price: 60,
       product_name: "Casual Hoodie",
@@ -121,7 +120,7 @@ function App() {
     },
     {
       id: 10,
-      product_image: new URL("./assets/jacket.png", import.meta.url).href,
+      product_image: "jacket.png",
       product_category: "clothings",
       product_price: 110,
       product_name: "Leather Jacket",
@@ -133,7 +132,7 @@ function App() {
     },
     {
       id: 11,
-      product_image: new URL("./assets/dress.png", import.meta.url).href,
+      product_image: "dress.png",
       product_category: "clothings",
       product_price: 220,
       product_name: "Evening Dress",
@@ -145,7 +144,7 @@ function App() {
     },
     {
       id: 12,
-      product_image: new URL("./assets/suit.png", import.meta.url).href,
+      product_image: "suit.png",
       product_category: "clothings",
       product_price: 500,
       product_name: "Men’s Formal Suit",
@@ -157,7 +156,7 @@ function App() {
     },
     {
       id: 13,
-      product_image: new URL("./assets/mug.png", import.meta.url).href,
+      product_image: "mug.png",
       product_category: "home",
       product_price: 10,
       product_name: "Ceramic Coffee Mug",
@@ -169,7 +168,7 @@ function App() {
     },
     {
       id: 14,
-      product_image: new URL("./assets/kettle.png", import.meta.url).href,
+      product_image: "kettle.png",
       product_category: "home",
       product_price: 35,
       product_name: "Electric Kettle",
@@ -181,7 +180,7 @@ function App() {
     },
     {
       id: 15,
-      product_image: new URL("./assets/toaster.png", import.meta.url).href,
+      product_image: "toaster.png",
       product_category: "home",
       product_price: 60,
       product_name: "2-Slice Toaster",
@@ -193,7 +192,7 @@ function App() {
     },
     {
       id: 16,
-      product_image: new URL("./assets/vacuum.png", import.meta.url).href,
+      product_image: "vacuum.png",
       product_category: "home",
       product_price: 200,
       product_name: "Vacuum Cleaner",
@@ -205,7 +204,7 @@ function App() {
     },
     {
       id: 17,
-      product_image: new URL("./assets/microwave.png", import.meta.url).href,
+      product_image: "microwave.png",
       product_category: "home",
       product_price: 450,
       product_name: "Microwave Oven",
@@ -217,7 +216,7 @@ function App() {
     },
     {
       id: 18,
-      product_image: new URL("./assets/sofa.png", import.meta.url).href,
+      product_image: "sofa.png",
       product_category: "home",
       product_price: 900,
       product_name: "3-Seater Sofa",
