@@ -1,7 +1,9 @@
 import { createContext } from 'react'
 import './App.css'
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 import { HomePage } from './HomePage';
+import { DetailProductList } from './DetailProductList';
+import { Cart } from './Cart';
 
 export const Product_Context = createContext()
 
@@ -231,6 +233,9 @@ function App() {
     <Product_Context.Provider value={product_details}>
       <Routes>
         <Route path="/" element={<HomePage />} /> 
+        <Route path="/product/:id" element={<DetailProductList />} />  
+        <Route path="/cart" element={<Cart />} /> 
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </Product_Context.Provider>
   )
