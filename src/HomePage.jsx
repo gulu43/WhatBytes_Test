@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Route, Routes, Navigate } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { useContext } from 'react';
 import { Product_Context } from './App';
 import { ToastContainer, toast } from 'react-toastify';
@@ -8,9 +9,17 @@ import './hp.css'
 
 export function HomePage() {
     const { products, setProducts } = useContext(Product_Context);
-    const [maxPrice, setMaxPrice] = useState(300);
-    const [categoryRadio, setCategoryRadio] = useState('all');
-    const [inpSearch, setInpSearch] = useState('');
+
+    // const [maxPrice, setMaxPrice] = useState(300);
+    // const [categoryRadio, setCategoryRadio] = useState('all');
+    // const [inpSearch, setInpSearch] = useState('');
+    
+    // url changing
+    const [searchParams, setSearchParams] = useSearchParams();
+
+    const [maxPrice, setMaxPrice] = useState(searchParams.get("price") || 300);
+    const [categoryRadio, setCategoryRadio] = useState(searchParams.get("category") || "all");
+    const [inpSearch, setInpSearch] = useState(searchParams.get("search") || "");
 
 
     // console.log(products[15].id);
@@ -28,7 +37,11 @@ export function HomePage() {
 
 
     useEffect(() => {
-
+        setSearchParams({
+        category: categoryRadio,
+        price: maxPrice,
+        search: inpSearch
+  });
     }, [])
 
 
@@ -43,6 +56,11 @@ export function HomePage() {
                 <div>
                     <input type="text" id="search" placeholder='Search for products...' className='inp-search' onChange={(e) => {
                         setInpSearch(e.target.value)
+                        setSearchParams({
+                            category: categoryRadio,
+                            price: maxPrice,
+                            search: e.target.value
+                        });
                     }} />
                 </div>
                 <div className='cart-div'>
@@ -67,30 +85,61 @@ export function HomePage() {
                             <label>
                                 <input type="radio" name="category" value="all" onClick={(e) => {
                                     setCategoryRadio(e.target.value)
+                                    setSearchParams({
+                                        category: e.target.value,
+                                        price: maxPrice,
+                                        search: inpSearch
+                                    });
+
                                 }} defaultChecked />
                                 All
                             </label>
                             <label>
                                 <input type="radio" name="category" value="electronics" onClick={(e) => {
                                     setCategoryRadio(e.target.value)
+                                    setSearchParams({
+                                        category: e.target.value,
+                                        price: maxPrice,
+                                        search: inpSearch
+                                    });
+
                                 }} />
                                 Electronics
                             </label>
                             <label>
                                 <input type="radio" name="category" value="clothings" onClick={(e) => {
                                     setCategoryRadio(e.target.value)
+                                    setSearchParams({
+                                        category: e.target.value,
+                                        price: maxPrice,
+                                        search: inpSearch
+                                    });
+
                                 }} />
                                 Clothing
                             </label>
                             <label>
                                 <input type="radio" name="category" value="home" onClick={(e) => {
                                     setCategoryRadio(e.target.value)
+                                    setSearchParams({
+                                        category: e.target.value,
+                                        price: maxPrice,
+                                        search: inpSearch
+                                    });
+
                                 }} />
                                 Home
                             </label>
                         </div>
                         <div className='heading'>Price</div>
-                        <input type="range" className='inp-range' name="price" value={maxPrice} min="0" max="1000" step="1" onInput={(e) => { setMaxPrice(e.target.value) }} />
+                        <input type="range" className='inp-range' name="price" value={maxPrice} min="0" max="1000" step="1" onInput={(e) => {
+                            setMaxPrice(e.target.value)
+                            setSearchParams({
+                                category: categoryRadio,
+                                price: e.target.value,
+                                search: inpSearch
+                            });
+                        }} />
                         <div>Max: {maxPrice}</div>
                     </div>
 
