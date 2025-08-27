@@ -31,7 +31,7 @@ export function HomePage() {
                 </div>
             </div>
 
-
+        {/* body */}
             <div className='main-body'>
 
                 <div className='left-main'>
@@ -83,6 +83,25 @@ export function HomePage() {
                     </div>
                     
                 </div>
+            </div>
+
+            <div className="footer">
+                    <div>
+                        <div className="heading-footter">Filters</div>
+                        <div>All Items</div>
+                        <div>&copy; 2025 WhatBytes</div>
+                    </div>
+                    <div>
+                        <div className="heading-footter">About Us</div>
+                        <div>About Us</div>
+                        <div>Contact</div>
+                    </div>
+                    <div>
+                        <div className="heading-footter">Follow Us</div>    
+                        <div>
+                            <img src="./src/assets/footer-logo.png" alt="logo" />
+                        </div>
+                    </div>
             </div>
 
         </>

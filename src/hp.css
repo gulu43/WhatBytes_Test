@@ -102,7 +102,7 @@
 .main-body{
     display: flex;
     flex-direction: row;
-    height: calc(100%-60px);
+    height: calc(90%-60px);
     width: 100%;
     gap: 10px;
 
@@ -224,3 +224,20 @@
 }
 
 
+/* --------------footer ---------------- */
+/*  --------------------------------------- */
+.footer{
+    margin-top: 10px;
+    height: 10%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    background-color: #002b59;
+    justify-content: space-evenly;
+    color: white;
+}
+.heading-footter{
+    font-size: 110%;
+    font-weight: 700;
+    margin: 10px 0px;
+}
