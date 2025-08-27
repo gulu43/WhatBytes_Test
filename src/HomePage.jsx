@@ -47,7 +47,7 @@ export function HomePage() {
             {/* top div */}
             <div className='div-main'>
                 <div className="logo-div">
-                    <img src="./src/assets/logo.png" className="logo" alt="Logo" />
+                    <img src="/assets/logo.png" className="logo" alt="Logo" />
                 </div>
                 <div>
                     <input type="text" id="search" placeholder='Search for products...' className='inp-search' onChange={(e) => {
@@ -65,7 +65,7 @@ export function HomePage() {
                         navigate('/cart')
                     }}>
                         <span className='cart-img'>
-                            <img src="./src/assets/cart.png" alt="Cart" />
+                            <img src="/assets/cart.png" alt="Cart" />
                         </span>
                         <button className='btn-cart'  >Cart</button>
                     </span>
@@ -197,7 +197,7 @@ export function HomePage() {
                 <div>
                     <div className="heading-footter">Follow Us</div>
                     <div>
-                        <img src="./src/assets/footer-logo.png" className="footer-img" alt="logo" />
+                        <img src="/assets/footer-logo.png" className="footer-img" alt="logo" />
                     </div>
                 </div>
             </div>
