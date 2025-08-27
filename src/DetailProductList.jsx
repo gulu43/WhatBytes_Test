@@ -15,6 +15,28 @@ export function DetailProductList() {
         return <div>Product not found!</div>;
     }
 
+
+    function increaseQuantity() {
+        setProducts(prev =>
+            prev.map(item =>
+                item.id === product.id
+                    ? { ...item, quantity_by_user: item.quantity_by_user + 1 }
+                    : item
+            )
+        );
+    };
+
+
+    function decreaseQuantity() {
+        setProducts(prev =>
+            prev.map(item =>
+                item.id === product.id
+                    ? { ...item, quantity_by_user: Math.max(1, item.quantity_by_user - 1) }
+                    : item
+            )
+        );
+    };
+
     return (
         <>
             <div className="product-detail">
@@ -24,15 +46,33 @@ export function DetailProductList() {
                     </div>
                 </div>
                 <div className='right-main-DetailProduct'>
-                    <div>{product.product_name}</div>
-                    <div>${product.product_price}</div>
-                    <div>Rating: {product.product_rating}</div>
-                    <div>{product.product_description}</div>
-                    <div> Category: {product.product_category}</div>
-                    <button>Add to Cart</button>
+                    <div className='header-dp'>{product.product_name}</div>
+                    <div className='price-dp'>${product.product_price}</div>
+                    <div className='rating-dp'>Rating: {product.product_rating}</div>
+                    <div className='discription-db'>{product.product_description}</div>
+                    <div className='cetegory-dp'> Category: {product.product_category}</div>
+                    <div className='quentity-control-div'>
+                        <div className='quantity-txt'>Quantity: </div>
+                        <button className='btn-var' onClick={increaseQuantity}>+</button>
+                        <div className='quentity-dp'>{product.quantity_by_user}</div>
+                        <button className='btn-var' onClick={decreaseQuantity}>-</button>
+                    </div>
+                    <div className='remove-dp'>
+                        <div className='remove-txt'>Remove</div>
+                        <button className='btn-del' onClick={() => {
+                            setProducts(prevProducts =>
+                                prevProducts.map(item =>
+                                    item.id === product.id
+                                        ? { ...item, quantity_by_user: 0, inCart: false }
+                                        : item
+                                )
+                            );
+                        }}>Click</button>
+                    </div>
                     
+
                 </div>
-                
+
             </div>
         </>
     );

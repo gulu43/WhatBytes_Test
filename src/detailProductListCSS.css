@@ -43,4 +43,62 @@
     grid-row: 1 / 2;
     height: 100%;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    /* align-items: center; */
+}
+.header-dp{
+    font-size: 300%;
+}
+.price-dp{
+    font-size: 200%;
+}
+.rating-dp{
+    font-size: 120%;
+}
+.discription-db{
+    font-size: 120%;
+}
+.cetegory-dp{
+    font-size: 120%;
+}
+.btn-db{
+    min-width: 60px;
+    max-width: 110px;
+    height: 30px;
+    border: none;
+    border-radius: 10px;
+    background-color: #025cb1;
+    color: white;
+    font-weight: 700;
+}
+.quentity-control-div{
+    display: flex;
+    gap: 5px;
+}
+.btn-var{
+    background-color: #025cb1;
+    color: white;
+    height: 20px;
+    width: 20px;
+    border: none;
+    border-radius: 5px;
+}
+.remove-dp{
+    display: flex;
+    gap: 5px;
+}
+.remove-txt{
+    font-size: 120%;
+}
+.btn-del{
+    background-color: red;
+    color: white;
+    font-weight: 500;
+    height: 20px;
+    width: 50px;
+    border: none;
+    border-radius: 5px;
 }
