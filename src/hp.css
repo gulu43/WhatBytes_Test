@@ -58,7 +58,7 @@
     height: 60%;
 
     padding-left: 40px;
-    background-image: url('/assets/Search.png');
+    background-image: url('/public/assets/search.png');
     background-repeat: no-repeat;
     background-position: 10px center;
     background-size: 20px 20px;
