@@ -2,22 +2,34 @@ import { useState, useEffect } from "react";
 import { Route, Routes, Navigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { Product_Context } from './App';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './hp.css'
 
 export function HomePage() {
-    const product_details = useContext(Product_Context);
+    const { products, setProducts } = useContext(Product_Context);
     const [maxPrice, setMaxPrice] = useState(300);
     const [categoryRadio, setCategoryRadio] = useState('all');
     const [inpSearch, setInpSearch] = useState('');
 
 
-    // console.log(product_details[15].id);
+    // console.log(products[15].id);
+
+    function addToCart(id) {
+        setProducts((prevProducts) => {
+            return prevProducts.map((item) => {
+                return item.id === id ? { ...item, inCart: true } : item;
+            });
+        });
+        const product = products.find(item => item.id === id);
+        toast.success(`${product.product_name} added to cart!`);
+    }
+
+
 
     useEffect(() => {
 
-        console.log(inpSearch);
-
-    }, [inpSearch])
+    }, [])
 
 
     return (
@@ -87,27 +99,28 @@ export function HomePage() {
                 <div className='rigth-main'>
                     <span className='Listing-txt'>{'Product Listing'}</span>
                     <div className='rigth-main-safe-area' >
-                        {inpSearch != '' ? (
-                            product_details
-                                .filter((item) => (item.product_name.toLowerCase().includes( inpSearch.toLowerCase() ) ))
+
+                        {/* {inpSearch != '' ? (
+                            products
+                                .filter((item) => (item.product_name.toLowerCase().includes(inpSearch.toLowerCase())))
                                 .map((item) => (
-                                        <div key={item.id} className="card">
+                                    <div key={item.id} className="card">
 
 
-                                            <div className="card-image-holder">
-                                                <img src={`/assets/${item.product_image}`} alt={item.product_name} />
-                                            </div>
-                                            <div className="txt-card">
-                                                <div>{item.product_name}</div>
-                                                <div>${item.product_price}</div>
-                                                <div>Rating {item.product_rating}</div>
-                                            </div>
-                                            <button>Add to Cart</button>
+                                        <div className="card-image-holder">
+                                            <img src={`/assets/${item.product_image}`} alt={item.product_name} />
                                         </div>
-
+                                        <div className="txt-card">
+                                            <div>{item.product_name}</div>
+                                            <div>${item.product_price}</div>
+                                            <div>Rating {item.product_rating}</div>
+                                        </div>
+                                        <button onClick={() => addToCart(item.id) } >Add to Cart</button>
+                                    </div>
+                                
                                 ))
-                            ) :
-                            ( product_details
+                        ) :
+                            (products
                                 .filter((item) => {
                                     // Category filter
                                     const categoryMatch =
@@ -131,10 +144,38 @@ export function HomePage() {
                                             <div>${item.product_price}</div>
                                             <div>Rating {item.product_rating}</div>
                                         </div>
-                                        <button>Add to Cart</button>
+                                        <button onClick={() => addToCart(item.id) } >Add to Cart</button>
                                     </div>
 
-                                )))}
+                                )))} */}
+
+                        {(() => {
+                            const filteredProducts = inpSearch !== ''
+                                ? products.filter(item => item.product_name.toLowerCase().includes(inpSearch.toLowerCase()))
+                                : products.filter(item => {
+                                    const categoryMatch = categoryRadio === "all" || item.product_category === categoryRadio;
+                                    const priceMatch = item.product_price <= maxPrice;
+                                    return categoryMatch && priceMatch;
+                                });
+
+                            if (filteredProducts.length === 0) {
+                                return <div className="no-products">No products found!</div>;
+                            }
+
+                            return filteredProducts.map(item => (
+                                <div key={item.id} className="card">
+                                    <div className="card-image-holder">
+                                        <img src={`/assets/${item.product_image}`} alt={item.product_name} />
+                                    </div>
+                                    <div className="txt-card">
+                                        <div>{item.product_name}</div>
+                                        <div>${item.product_price}</div>
+                                        <div>Rating {item.product_rating}</div>
+                                    </div>
+                                    <button onClick={() => addToCart(item.id)}>Add to Cart</button>
+                                </div>
+                            ));
+                        })()}
                     </div>
 
                 </div>

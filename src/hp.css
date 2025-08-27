@@ -224,6 +224,10 @@
   font-weight: 500;
 }
 
+.no-products{
+    font-size: 120%;
+    color: red;
+}
 
 /* --------------footer ---------------- */
 /*  --------------------------------------- */
@@ -231,12 +235,15 @@
     
     margin-top: 90vh;
     margin-top: 10px;
+    padding-left: 3%;
+    padding-right: 3%;
     height: 10%;
     width: 100%;
     display: flex;
     flex-direction: row;
     background-color: #002b59;
-    justify-content: space-evenly;
+    justify-content: space-between;
+
     color: white;
 }
 .heading-footter{

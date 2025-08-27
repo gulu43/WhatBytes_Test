@@ -4,6 +4,9 @@ import { Route, Routes, Navigate } from 'react-router-dom';
 import { HomePage } from './HomePage';
 import { DetailProductList } from './DetailProductList';
 import { Cart } from './Cart';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useState } from 'react';
 
 export const Product_Context = createContext()
 
@@ -227,15 +230,30 @@ function App() {
       inCart: false,
     },
   ];
-
+  const [products, setProducts] = useState(product_details);
   return (
-    <Product_Context.Provider value={product_details}>
+    <Product_Context.Provider value={{products, setProducts}}>
+
+      <ToastContainer
+        position="top-left"
+        autoClose={2500}  // 3 seconds
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+
       <Routes>
-        <Route path="/" element={<HomePage />} /> 
-        <Route path="/product/:id" element={<DetailProductList />} />  
-        <Route path="/cart" element={<Cart />} /> 
+        <Route path="/" element={<HomePage />} />
+        <Route path="/product/:id" element={<DetailProductList />} />
+        <Route path="/cart" element={<Cart />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
+
+      
     </Product_Context.Provider>
   )
 }
