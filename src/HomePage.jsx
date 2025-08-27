@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Route, Routes, Navigate } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import { useSearchParams } from 'react-router-dom';
 import { useContext } from 'react';
 import { Product_Context } from './App';
@@ -8,6 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import './hp.css'
 
 export function HomePage() {
+    const navigate = useNavigate();
     const { products, setProducts } = useContext(Product_Context);
 
     // const [maxPrice, setMaxPrice] = useState(300);
@@ -212,7 +213,10 @@ export function HomePage() {
                             }
 
                             return filteredProducts.map(item => (
-                                <div key={item.id} className="card">
+                                <div key={item.id} className="card" onClick={() => {
+                                    navigate(`/product/${item.id}`)
+                                    
+                                    }} >
                                     <div className="card-image-holder">
                                         <img src={`/assets/${item.product_image}`} alt={item.product_name} />
                                     </div>
