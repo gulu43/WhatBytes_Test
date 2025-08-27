@@ -1,12 +1,11 @@
-import { createContext } from 'react'
-import './App.css'
+import { useState, useEffect, createContext  } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import { HomePage } from './HomePage';
 import { DetailProductList } from './DetailProductList';
 import { Cart } from './Cart';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useState } from 'react';
+import './App.css'
 
 export const Product_Context = createContext()
 
@@ -230,13 +229,31 @@ function App() {
       inCart: false,
     },
   ];
-  const [products, setProducts] = useState(product_details);
+  // const [products, setProducts] = useState(product_details);
+
+  const [products, setProducts] = useState(() => {
+    const saved = localStorage.getItem("product_details_localStorage");
+    return saved ? JSON.parse(saved) : product_details;
+  });
+
+  useEffect(() => {
+    const handleBeforeUnload = () => {
+      localStorage.setItem("product_details_localStorage", JSON.stringify(products));
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, [products]);
+
   return (
-    <Product_Context.Provider value={{products, setProducts}}>
+    <Product_Context.Provider value={{ products, setProducts }}>
 
       <ToastContainer
         position="top-left"
-        autoClose={2500}  // 3 seconds
+        autoClose={2500}  
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
@@ -253,7 +270,7 @@ function App() {
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
 
-      
+
     </Product_Context.Provider>
   )
 }
