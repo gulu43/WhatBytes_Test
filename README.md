@@ -1,1 +1,1 @@
-vercel link: https://what-bytes-test-oae418qiq-gulu43s-projects.vercel.app
+vercel link: https://what-bytes-test.vercel.app
