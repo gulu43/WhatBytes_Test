@@ -11,11 +11,6 @@ export function HomePage() {
     const navigate = useNavigate();
     const { products, setProducts } = useContext(Product_Context);
 
-    // const [maxPrice, setMaxPrice] = useState(300);
-    // const [categoryRadio, setCategoryRadio] = useState('all');
-    // const [inpSearch, setInpSearch] = useState('');
-    
-    // url changing
     const [searchParams, setSearchParams] = useSearchParams();
 
     const [maxPrice, setMaxPrice] = useState(searchParams.get("price") || 300);
@@ -65,11 +60,14 @@ export function HomePage() {
                     }} />
                 </div>
                 <div className='cart-div'>
-                    <span className='cart-wapper'>
+                    <span className='cart-wapper' onClick={(e)=>{
+                        e.stopPropagation();
+                        navigate('/cart')
+                    }}>
                         <span className='cart-img'>
                             <img src="./src/assets/cart.png" alt="Cart" />
                         </span>
-                        <button className='btn-cart'>Cart</button>
+                        <button className='btn-cart'  >Cart</button>
                     </span>
 
                 </div>
@@ -149,55 +147,6 @@ export function HomePage() {
                 <div className='rigth-main'>
                     <span className='Listing-txt'>{'Product Listing'}</span>
                     <div className='rigth-main-safe-area' >
-
-                        {/* {inpSearch != '' ? (
-                            products
-                                .filter((item) => (item.product_name.toLowerCase().includes(inpSearch.toLowerCase())))
-                                .map((item) => (
-                                    <div key={item.id} className="card">
-
-
-                                        <div className="card-image-holder">
-                                            <img src={`/assets/${item.product_image}`} alt={item.product_name} />
-                                        </div>
-                                        <div className="txt-card">
-                                            <div>{item.product_name}</div>
-                                            <div>${item.product_price}</div>
-                                            <div>Rating {item.product_rating}</div>
-                                        </div>
-                                        <button onClick={() => addToCart(item.id) } >Add to Cart</button>
-                                    </div>
-                                
-                                ))
-                        ) :
-                            (products
-                                .filter((item) => {
-                                    // Category filter
-                                    const categoryMatch =
-                                        categoryRadio === "all" || item.product_category === categoryRadio;
-
-                                    // Price filter
-                                    const priceMatch = item.product_price <= maxPrice;
-
-
-                                    return categoryMatch && priceMatch;
-                                })
-                                .map((item) => (
-                                    <div key={item.id} className="card">
-
-
-                                        <div className="card-image-holder">
-                                            <img src={`/assets/${item.product_image}`} alt={item.product_name} />
-                                        </div>
-                                        <div className="txt-card">
-                                            <div>{item.product_name}</div>
-                                            <div>${item.product_price}</div>
-                                            <div>Rating {item.product_rating}</div>
-                                        </div>
-                                        <button onClick={() => addToCart(item.id) } >Add to Cart</button>
-                                    </div>
-
-                                )))} */}
 
                         {(() => {
                             const filteredProducts = inpSearch !== ''
