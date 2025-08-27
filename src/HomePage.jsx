@@ -27,7 +27,7 @@ export function HomePage() {
     function addToCart(id) {
         setProducts((prevProducts) => {
             return prevProducts.map((item) => {
-                return item.id === id ? { ...item, inCart: true } : item;
+                return item.id === id ? { ...item, inCart: true, quantity_by_user: 1  } : item;
             });
         });
         const product = products.find(item => item.id === id);
